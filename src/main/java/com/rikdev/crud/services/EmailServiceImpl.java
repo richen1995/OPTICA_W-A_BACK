@@ -15,7 +15,7 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public void sendResetPasswordEmail(String to, String token) {
-        String resetUrl = "http://localhost:4200/#/reset-password?token=" + token;
+        String resetUrl = "https://nissivision.netlify.app/#/reset-password?token=" + token;
         System.out.println("Enviando email a: " + to);
         System.out.println("Link de recuperación: " + resetUrl);
 
