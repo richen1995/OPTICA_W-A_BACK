@@ -1,5 +1,6 @@
 package com.rikdev.crud.services;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -9,13 +10,17 @@ public class EmailServiceImpl implements EmailService {
 
     private final JavaMailSender mailSender;
 
+    @Value("${app.frontend.url}")
+    private String frontendUrl;
+
     public EmailServiceImpl(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
 
     @Override
     public void sendResetPasswordEmail(String to, String token) {
-        String resetUrl = "https://nissivision.netlify.app/#/reset-password?token=" + token;
+        String resetUrl = frontendUrl + "#/reset-password?token=" + token;
+
         System.out.println("Enviando email a: " + to);
         System.out.println("Link de recuperación: " + resetUrl);
 
@@ -27,7 +32,6 @@ public class EmailServiceImpl implements EmailService {
                 "Este enlace es válido por 24 horas.\n\n" +
                 "Si no solicitó esto, puede ignorar este correo.");
 
-        // Esta línea es la que hace el envío real
         mailSender.send(message);
     }
 }
