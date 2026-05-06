@@ -54,4 +54,9 @@ public class AuthController {
     public void updateUserStatus(@PathVariable Long id, @RequestBody UserStatusRequest request) {
         userService.updateUserStatus(id, request.isActive());
     }
+
+    @GetMapping("/check-email/{email}")
+    public boolean checkEmailExists(@PathVariable String email) {
+        return authService.checkEmailExists(email);
+    }
 }

@@ -155,4 +155,9 @@ public class AuthServiceImpl implements AuthService {
         // Eliminar token usado
         tokenRepository.delete(resetToken);
     }
+
+    @Override
+    public boolean checkEmailExists(String email) {
+        return userRepository.existsByEmailLogin(email);
+    }
 }

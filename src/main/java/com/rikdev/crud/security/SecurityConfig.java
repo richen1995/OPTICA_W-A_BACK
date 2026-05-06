@@ -39,6 +39,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/").permitAll() // Health check
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/error").permitAll() // Permitir ver errores reales
                         .anyRequest().authenticated())
