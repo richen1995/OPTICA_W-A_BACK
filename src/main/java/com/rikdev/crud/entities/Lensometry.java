@@ -40,6 +40,6 @@ public class Lensometry {
     // 🔹 Clave foránea hacia MedicalRecord
     @ManyToOne
     @JoinColumn(name = "id_medical_record")
-    @JsonIgnoreProperties({ "lensometries", "visualAcuities", "rx" })
+    @JsonIgnoreProperties({ "lensometries", "visualAcuities", "rx", "refractions" })
     private MedicalRecord medicalRecord;
 }

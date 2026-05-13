@@ -58,6 +58,15 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
             });
         }
 
+        if (medicalRecord.getRefractions() != null) {
+            medicalRecord.getRefractions().forEach(r -> {
+                if (r.getId_refraction() != null && r.getId_refraction() == 0L) {
+                    r.setId_refraction(null);
+                }
+                r.setMedicalRecord(medicalRecord);
+            });
+        }
+
         return medicalRecordRepository.save(medicalRecord);
     }
 

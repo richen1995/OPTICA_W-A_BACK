@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import java.util.List;
 
 @Data
@@ -46,6 +45,11 @@ public class MedicalRecord {
     @OneToMany(mappedBy = "medicalRecord", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonIgnoreProperties("medicalRecord")
     private List<VisualAcuity> visualAcuities;
+
+    // 🔹 Relación con Refraction
+    @OneToMany(mappedBy = "medicalRecord", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonIgnoreProperties("medicalRecord")
+    private List<Refraction> refractions;
 
     // 🔹 Relación con Rx
     @OneToMany(mappedBy = "medicalRecord", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)

@@ -43,6 +43,6 @@ public class VisualAcuity {
 
     @ManyToOne
     @JoinColumn(name = "id_medical_record")
-    @JsonIgnoreProperties({ "lensometries", "visualAcuities", "rx" })
+    @JsonIgnoreProperties({ "lensometries", "visualAcuities", "rx", "refractions" })
     private MedicalRecord medicalRecord;
 }
